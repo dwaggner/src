@@ -1,0 +1,26 @@
+Blocks
+tile.RubyOre.name=Ruby Ore
+tile.RubyBlock.name=Ruby Block
+tile.SapphireOre.name=Sapphire Ore
+Items
+item.Ruby.name=Ruby
+item.RubySword.name=Ruby Sword
+item.RubyPickaxe.name=Ruby Pickaxe
+item.RubyHoe.name=Ruby Hoe
+item.RubyAxe.name=Ruby Axe
+item.RubySpade.name=Ruby Spade
+item.Sapphire.name=Sapphire
+item.SapphireSword.name=Sapphire Sword
+item.SapphireAxe.name=Sapphire Axe
+item.SapphirePickaxe.name=Sapphire Pickaxe
+item.SapphireSpade.name=Sapphire Spade
+item.SapphireHoe.name=Sapphire Hoe
+Armor
+item.RubyHelm.name= Ruby Helmet
+item.RubyLegs.name=Ruby Leggings
+item.RubyChest.name=Ruby Chestplate
+item.RubyBoots.name=Ruby Boots
+item.SapphireHelm.name=Sapphire Helmet
+item.SapphireChest.name=Sapphire Chestplate
+item.SapphireLegs.name=Sapphire Leggings
+item.SapphireBoots.name=Sapphire Boots
