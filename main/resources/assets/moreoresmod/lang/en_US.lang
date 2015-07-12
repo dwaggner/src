@@ -2,6 +2,7 @@ Blocks
 tile.RubyOre.name=Ruby Ore
 tile.RubyBlock.name=Ruby Block
 tile.SapphireOre.name=Sapphire Ore
+tile.SapphireBlock.name=Sapphire Block
 Items
 item.Ruby.name=Ruby
 item.RubySword.name=Ruby Sword
