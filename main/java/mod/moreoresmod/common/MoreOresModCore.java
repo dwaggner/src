@@ -9,6 +9,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import mod.moreoresmod.blocks.GreenMintOre;
+import mod.moreoresmod.blocks.MintOre;
+import mod.moreoresmod.blocks.RedMintOre;
 import mod.moreoresmod.blocks.RubyBlock;
 import mod.moreoresmod.blocks.RubyOre;
 import mod.moreoresmod.blocks.SapphireBlock;
@@ -52,12 +55,18 @@ public class MoreOresModCore {
 	//public static Items
 	public static Item itemRuby;
 	public static Item itemSapphire;
+	public static Item itemRedMintDust;
+	public static Item itemGreenMintDust;
+	public static Item itemMintDust;
 	
 	//public static Blocks
 	public static Block oreRubyOre;
 	public static Block blockRubyBlock;
 	public static Block oreSapphireOre;
 	public static Block blockSapphireBlock;
+	public static Block oreRedMintOre;
+	public static Block oreGreenMintOre;
+	public static Block oreMintOre;
 	
 	//public static Tools
 	public static Item itemRubySword;
@@ -103,13 +112,19 @@ public class MoreOresModCore {
 		//Items
 		itemRuby = new NCItems().setUnlocalizedName("Ruby");
 		itemSapphire = new NCItems().setUnlocalizedName("Sapphire");
-		
+		itemRedMintDust = new NCItems().setUnlocalizedName("RedMintDust");
+		itemGreenMintDust = new NCItems().setUnlocalizedName("GreenMintDust");
+		itemMintDust = new NCItems().setUnlocalizedName("MintDust");
+
 		//Blocks
 		oreRubyOre = new RubyOre(Material.rock).setBlockName("RubyOre");
 		blockRubyBlock = new RubyBlock(Material.iron).setBlockName("RubyBlock");
 		oreSapphireOre = new SapphireOre(Material.rock).setBlockName("SapphireOre");
 		blockSapphireBlock = new SapphireBlock(Material.iron).setBlockName("SapphireBlock");
-		
+		oreRedMintOre = new RedMintOre(Material.rock).setBlockName("RedMintOre");
+		oreGreenMintOre = new GreenMintOre(Material.rock).setBlockName("GreenMintOre");
+		oreMintOre = new MintOre(Material.rock).setBlockName("MintOre");
+
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
 		itemRubyAxe = new RubyAxe(RubyMaterial).setUnlocalizedName("RubyAxe");
@@ -133,17 +148,22 @@ public class MoreOresModCore {
 		armorSapphireChest = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 1).setUnlocalizedName("SapphireChest");
 		armorSapphireLegs = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 2).setUnlocalizedName("SapphireLegs");
 		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");
-		//GameRegistry:
 		
 		//Register Item
 		GameRegistry.registerItem(itemRuby, "Ruby");
 		GameRegistry.registerItem(itemSapphire, "Sapphire");
-		
+		GameRegistry.registerItem(itemGreenMintDust,  "GreenMintDust");
+		GameRegistry.registerItem(itemRedMintDust,  "RedMintDust");
+		GameRegistry.registerItem(itemMintDust,  "MintDust");
+
 		//Register Block
 		GameRegistry.registerBlock(oreRubyOre, "RubyOre");
 		GameRegistry.registerBlock(blockRubyBlock, "RubyBlock");
 		GameRegistry.registerBlock(oreSapphireOre,  "SapphireOre");
 		GameRegistry.registerBlock(blockSapphireBlock,  "SapphireBlock");
+		GameRegistry.registerBlock(oreGreenMintOre,  "GreenMintOre");
+		GameRegistry.registerBlock(oreRedMintOre,  "RedMintOre");
+		GameRegistry.registerBlock(oreMintOre,  "MintOre");
 		
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
@@ -201,7 +221,10 @@ public class MoreOresModCore {
 		ItemStack SapphireChestStack = new ItemStack(MoreOresModCore.armorSapphireChest);
 		ItemStack SapphireLegsStack = new ItemStack(MoreOresModCore.armorSapphireLegs);
 		ItemStack SapphireBootsStack = new ItemStack(MoreOresModCore.armorSapphireBoots);
-		
+		ItemStack MintDustStack = new ItemStack(MoreOresModCore.itemMintDust);
+		ItemStack GreenMintDustStack = new ItemStack(MoreOresModCore.itemGreenMintDust);
+		ItemStack RedMintDustStack = new ItemStack(MoreOresModCore.itemRedMintDust);
+
 		//Crafting Recipes
 		//Ruby -> Ruby Block
 		GameRegistry.addRecipe(RubyBlockStack, 
@@ -326,10 +349,13 @@ public class MoreOresModCore {
 		//Smelting Recipes
 		GameRegistry.addSmelting(MoreOresModCore.oreRubyOre, RubyStack, 5);
 		GameRegistry.addSmelting(MoreOresModCore.oreSapphireOre, SapphireStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreRedMintOre, RedMintDustStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreGreenMintOre, GreenMintDustStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreMintOre, MintDustStack, 5);
 	}
 	
 	@EventHandler
-	public static void postInit(FMLPostInitializationEvent Posteven) {
-		
+	public static void postInit(FMLPostInitializationEvent Posteven) {	
+
 	}
 }
