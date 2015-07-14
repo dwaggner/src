@@ -9,6 +9,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import mod.moreoresmod.blocks.CheeseOre;
 import mod.moreoresmod.blocks.GreenMintOre;
 import mod.moreoresmod.blocks.MintOre;
 import mod.moreoresmod.blocks.RedMintOre;
@@ -31,10 +32,12 @@ import mod.moreoresmod.items.SapphireSpade;
 import mod.moreoresmod.items.SapphireSword;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -67,7 +70,8 @@ public class MoreOresModCore {
 	public static Block oreRedMintOre;
 	public static Block oreGreenMintOre;
 	public static Block oreMintOre;
-	
+	public static Block oreCheeseOre;
+
 	//public static Tools
 	public static Item itemRubySword;
 	public static Item itemRubyAxe;
@@ -81,7 +85,7 @@ public class MoreOresModCore {
 	public static Item itemSapphireSpade;
 	public static Item itemSapphireHoe;
 	
-	//Armor
+	//public static Armor
 	public static int armorRubyHelmID;
 	public static int armorRubyChestID;
 	public static int armorRubyLegsID;
@@ -101,6 +105,12 @@ public class MoreOresModCore {
 	public static Item armorSapphireChest;
 	public static Item armorSapphireLegs;
 	public static Item armorSapphireBoots;
+	
+	//public static Food
+	public static Item foodRedMint;
+	public static Item foodGreenMint;
+	public static Item foodMint;
+	public static Item foodCheese;
 
 	@SidedProxy(clientSide = RefStrings.CLIENTSIDE , serverSide = RefStrings.SERVERSIDE)
 	public static ServerProxy proxy;
@@ -109,6 +119,12 @@ public class MoreOresModCore {
 	public static void PreInit(FMLPreInitializationEvent Proevent) {
 		proxy.registerRenderInfo();
 		
+		//Food
+		foodRedMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("RedMint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":RedMint");
+		foodGreenMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("GreenMint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":GreenMint");
+		foodMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("Mint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Mint");
+		foodCheese = new ItemFood(4, 0.6F, false).setUnlocalizedName("Cheese").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Cheese");
+
 		//Items
 		itemRuby = new NCItems().setUnlocalizedName("Ruby");
 		itemSapphire = new NCItems().setUnlocalizedName("Sapphire");
@@ -124,6 +140,7 @@ public class MoreOresModCore {
 		oreRedMintOre = new RedMintOre(Material.rock).setBlockName("RedMintOre");
 		oreGreenMintOre = new GreenMintOre(Material.rock).setBlockName("GreenMintOre");
 		oreMintOre = new MintOre(Material.rock).setBlockName("MintOre");
+		oreCheeseOre = new CheeseOre(Material.rock).setBlockName("CheeseOre");
 
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
@@ -147,7 +164,7 @@ public class MoreOresModCore {
 		armorSapphireHelm = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 0).setUnlocalizedName("SapphireHelm");
 		armorSapphireChest = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 1).setUnlocalizedName("SapphireChest");
 		armorSapphireLegs = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 2).setUnlocalizedName("SapphireLegs");
-		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");
+		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");		
 		
 		//Register Item
 		GameRegistry.registerItem(itemRuby, "Ruby");
@@ -164,7 +181,8 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(oreGreenMintOre,  "GreenMintOre");
 		GameRegistry.registerBlock(oreRedMintOre,  "RedMintOre");
 		GameRegistry.registerBlock(oreMintOre,  "MintOre");
-		
+		GameRegistry.registerBlock(oreCheeseOre,  "CheeseOre");
+
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
 		GameRegistry.registerItem(itemRubyAxe, "RubyAxe");
@@ -189,6 +207,12 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(armorSapphireLegs, "SapphireLegs");
 		GameRegistry.registerItem(armorSapphireBoots, "SapphireBoots");
 		
+		//Register Food
+		GameRegistry.registerItem(foodRedMint, "RedMint");
+		GameRegistry.registerItem(foodGreenMint, "GreenMint");
+		GameRegistry.registerItem(foodMint, "Mint");
+		GameRegistry.registerItem(foodCheese, "Cheese");
+
 	}
 	
 	@EventHandler
@@ -224,6 +248,9 @@ public class MoreOresModCore {
 		ItemStack MintDustStack = new ItemStack(MoreOresModCore.itemMintDust);
 		ItemStack GreenMintDustStack = new ItemStack(MoreOresModCore.itemGreenMintDust);
 		ItemStack RedMintDustStack = new ItemStack(MoreOresModCore.itemRedMintDust);
+		ItemStack RedMintCandy = new ItemStack(MoreOresModCore.foodRedMint);
+		ItemStack GreenMintCandy = new ItemStack(MoreOresModCore.foodGreenMint);
+		ItemStack MintCandy = new ItemStack(MoreOresModCore.foodMint);
 
 		//Crafting Recipes
 		//Ruby -> Ruby Block
@@ -345,6 +372,12 @@ public class MoreOresModCore {
 				"d d",
 				"d d",
 				'd', SapphireStack);
+		//GreenMintCandy
+		GameRegistry.addShapelessRecipe(GreenMintCandy, GreenMintDustStack);
+		//RedMintCandy
+		GameRegistry.addShapelessRecipe(RedMintCandy, RedMintDustStack);
+		//MintCandy
+		GameRegistry.addShapelessRecipe(MintCandy, MintDustStack);
 		
 		//Smelting Recipes
 		GameRegistry.addSmelting(MoreOresModCore.oreRubyOre, RubyStack, 5);

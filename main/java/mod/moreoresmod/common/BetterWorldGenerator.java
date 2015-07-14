@@ -41,25 +41,30 @@ public class BetterWorldGenerator implements IWorldGenerator{
 		    	int firstBlockZCoord = chunkZ + random.nextInt(16);
 		    	(new WorldGenMinable(MoreOresModCore.oreSapphireOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
 		    }
-		
- 		for(int k = 0; k < 10; k++) {
- 			int firstBlockXCoord = chunkX + random.nextInt(16);
- 			int firstBlockYCoord = random.nextInt(64);
- 			int firstBlockZCoord = chunkZ + random.nextInt(16);
- 			(new WorldGenMinable(MoreOresModCore.oreRedMintOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+ 				int firstBlockZCoord = chunkZ + random.nextInt(16);
+ 				(new WorldGenMinable(MoreOresModCore.oreRedMintOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
  			}
-		for(int k = 0; k < 10; k++) {
- 			int firstBlockXCoord = chunkX + random.nextInt(16);
- 			int firstBlockYCoord = random.nextInt(64);
- 			int firstBlockZCoord = chunkZ + random.nextInt(16);
- 			(new WorldGenMinable(MoreOresModCore.oreGreenMintOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
- 		}
-		for(int k = 0; k < 10; k++) {
- 			int firstBlockXCoord = chunkX + random.nextInt(16);
- 			int firstBlockYCoord = random.nextInt(64);
- 			int firstBlockZCoord = chunkZ + random.nextInt(16);
- 			(new WorldGenMinable(MoreOresModCore.oreMintOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
- 		}
+		 	for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
+		 		(new WorldGenMinable(MoreOresModCore.oreGreenMintOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	}
+		 	for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
+		 		(new WorldGenMinable(MoreOresModCore.oreMintOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	}
+		 	for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
+		 		(new WorldGenMinable(MoreOresModCore.oreCheeseOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	}
 	}
 
 	private void generateNether(World world, Random random, int i, int j) {		

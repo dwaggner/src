@@ -6,6 +6,7 @@ tile.SapphireBlock.name=Sapphire Block
 tile.RedMintOre.name=Red Mint Ore
 tile.GreenMintOre.name=Green Mint Ore
 tile.MintOre.name=Mint Ore
+tile.CheeseOre.name=Cheese Ore
 Items
 item.Ruby.name=Ruby
 item.RubySword.name=Ruby Sword
@@ -22,6 +23,10 @@ item.SapphireHoe.name=Sapphire Hoe
 item.RedMintDust.name=Red Mint Dust
 item.GreenMintDust.name=Green Mint Dust
 item.MintDust.name=Mint Dust
+item.RedMint.name=Red Mint Candy
+item.GreenMint.name=Green Mint Candy
+item.Mint.name=Mint Candy
+item.Cheese.name=Cheese
 Armor
 item.RubyHelm.name= Ruby Helmet
 item.RubyLegs.name=Ruby Leggings
