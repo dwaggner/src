@@ -7,6 +7,7 @@ tile.RedMintOre.name=Red Mint Ore
 tile.GreenMintOre.name=Green Mint Ore
 tile.MintOre.name=Mint Ore
 tile.CheeseOre.name=Cheese Ore
+tile.GunpowderOre.name=Gunpowder Ore
 Items
 item.Ruby.name=Ruby
 item.RubySword.name=Ruby Sword

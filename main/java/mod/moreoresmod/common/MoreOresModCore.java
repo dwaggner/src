@@ -1,5 +1,7 @@
 package mod.moreoresmod.common;
 
+import com.moreoresmod.biome.BiomeGenCandy;
+import com.moreoresmod.dimension.dimensionRegistry;
 import com.moreoresmod.lib.RefStrings;
 
 import cpw.mods.fml.common.Mod;
@@ -9,8 +11,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
+import mod.moreoresmod.blocks.CandyPortal;
 import mod.moreoresmod.blocks.CheeseOre;
 import mod.moreoresmod.blocks.GreenMintOre;
+import mod.moreoresmod.blocks.GunpowderOre;
 import mod.moreoresmod.blocks.MintOre;
 import mod.moreoresmod.blocks.RedMintOre;
 import mod.moreoresmod.blocks.RubyBlock;
@@ -39,6 +44,9 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.WorldType;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
@@ -47,6 +55,7 @@ public class MoreOresModCore {
 	
 	public static final String modid = "MoreOresMod";
 	public static final String version = "Alpha 0.0";
+	public static int dimensionId = 8;
 	
 	//Tool Material
 	public static ToolMaterial RubyMaterial = EnumHelper.addToolMaterial("RubyMaterial", 2, 750, 6.0F, 2.0F, 10);
@@ -71,6 +80,8 @@ public class MoreOresModCore {
 	public static Block oreGreenMintOre;
 	public static Block oreMintOre;
 	public static Block oreCheeseOre;
+	public static Block oreGunpowderOre;
+	public static Block CandyPortal;
 
 	//public static Tools
 	public static Item itemRubySword;
@@ -111,13 +122,17 @@ public class MoreOresModCore {
 	public static Item foodGreenMint;
 	public static Item foodMint;
 	public static Item foodCheese;
-
+	
+	//Biome
+	public static BiomeGenBase biomeCandy;
+	
 	@SidedProxy(clientSide = RefStrings.CLIENTSIDE , serverSide = RefStrings.SERVERSIDE)
 	public static ServerProxy proxy;
 	
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent Proevent) {
 		proxy.registerRenderInfo();
+		
 		
 		//Food
 		foodRedMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("RedMint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":RedMint");
@@ -141,6 +156,8 @@ public class MoreOresModCore {
 		oreGreenMintOre = new GreenMintOre(Material.rock).setBlockName("GreenMintOre");
 		oreMintOre = new MintOre(Material.rock).setBlockName("MintOre");
 		oreCheeseOre = new CheeseOre(Material.rock).setBlockName("CheeseOre");
+		oreGunpowderOre = new GunpowderOre(Material.rock).setBlockName("GunpowderOre");
+		CandyPortal = new CandyPortal((Integer) 8).setBlockName("CandyPortalBlock");
 
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
@@ -166,6 +183,13 @@ public class MoreOresModCore {
 		armorSapphireLegs = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 2).setUnlocalizedName("SapphireLegs");
 		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");		
 		
+		//Biome
+		biomeCandy = new BiomeGenCandy(137);
+		
+		//dimension
+		DimensionManager.registerProviderType(MoreOresModCore.dimensionId, dimensionRegistry.class, false);
+		DimensionManager.registerDimension(MoreOresModCore.dimensionId, MoreOresModCore.dimensionId);
+		
 		//Register Item
 		GameRegistry.registerItem(itemRuby, "Ruby");
 		GameRegistry.registerItem(itemSapphire, "Sapphire");
@@ -182,7 +206,9 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(oreRedMintOre,  "RedMintOre");
 		GameRegistry.registerBlock(oreMintOre,  "MintOre");
 		GameRegistry.registerBlock(oreCheeseOre,  "CheeseOre");
-
+		GameRegistry.registerBlock(oreGunpowderOre,  "GunpowderOre");
+		GameRegistry.registerBlock(CandyPortal, modid + (CandyPortal.getUnlocalizedName().substring(5)));
+		
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
 		GameRegistry.registerItem(itemRubyAxe, "RubyAxe");
@@ -390,5 +416,6 @@ public class MoreOresModCore {
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent Posteven) {	
 
+		
 	}
 }
