@@ -1,3 +1,5 @@
+The items' and blocks' names
+
 Blocks
 tile.RubyOre.name=Ruby Ore
 tile.RubyBlock.name=Ruby Block
@@ -10,10 +12,11 @@ tile.CheeseOre.name=Cheese Ore
 tile.GunpowderOre.name=Gunpowder Ore
 tile.ChocolateCake.name=Chocolate Cake Block
 tile.IceingCake.name=Chocolate Cake With Iceing
+tile.BaconOre.name=Bacon Ore
+tile.CarrotOre.name=Carrot Ore
+tile.MelonOre.name=Melon Ore
 World Type
 generator.Biomes=Custom Biomes
-Biome
-biome.Cake=Cake
 Items
 item.Ruby.name=Ruby
 item.RubySword.name=Ruby Sword
@@ -34,6 +37,7 @@ item.RedMint.name=Red Mint Candy
 item.GreenMint.name=Green Mint Candy
 item.Mint.name=Mint Candy
 item.Cheese.name=Cheese
+item.Bacon.name=Bacon
 Armor
 item.RubyHelm.name= Ruby Helmet
 item.RubyLegs.name=Ruby Leggings

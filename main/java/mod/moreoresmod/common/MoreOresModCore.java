@@ -14,10 +14,13 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import mod.moreoresmod.blocks.BaconOre;
+import mod.moreoresmod.blocks.CarrotOre;
 import mod.moreoresmod.blocks.CheeseOre;
 import mod.moreoresmod.blocks.ChocolateCake;
 import mod.moreoresmod.blocks.GreenMintOre;
 import mod.moreoresmod.blocks.GunpowderOre;
+import mod.moreoresmod.blocks.MelonOre;
 import mod.moreoresmod.blocks.MintOre;
 import mod.moreoresmod.blocks.RedMintOre;
 import mod.moreoresmod.blocks.RubyBlock;
@@ -64,6 +67,7 @@ public class MoreOresModCore {
 	//Tool Material
 	public static ToolMaterial RubyMaterial = EnumHelper.addToolMaterial("RubyMaterial", 2, 750, 6.0F, 2.0F, 10);
 	public static ToolMaterial SapphireMaterial = EnumHelper.addToolMaterial("SapphireMaterial", 2, 750, 6.0F, 2.0F, 10);
+	
 	//Armor Material
 	public static ArmorMaterial RubyArmorMaterial = EnumHelper.addArmorMaterial("RubyArmorMaterial", 25, new int[] {2, 7, 4, 2}, 10); 
 	public static ArmorMaterial SapphireArmorMaterial = EnumHelper.addArmorMaterial("SapphireArmorMaterial", 25, new int[] {2, 7, 4, 2}, 10); 
@@ -76,17 +80,22 @@ public class MoreOresModCore {
 	public static Item itemMintDust;
 	
 	//public static Blocks
-	public static Block oreRubyOre;
 	public static Block blockRubyBlock;
-	public static Block oreSapphireOre;
 	public static Block blockSapphireBlock;
+	public static Block blockIceingCake;
+	public static Block blockChocolateCake;
+	
+	//public static ores
+	public static Block oreRubyOre;
+	public static Block oreSapphireOre;
 	public static Block oreRedMintOre;
 	public static Block oreGreenMintOre;
 	public static Block oreMintOre;
 	public static Block oreCheeseOre;
 	public static Block oreGunpowderOre;
-	public static Block blockIceingCake;
-	public static Block blockChocolateCake;
+	public static Block oreBaconOre;
+	public static Block oreCarrotOre;
+	public static Block oreMelonOre;
 
 	//public static Tools
 	public static Item itemRubySword;
@@ -127,6 +136,7 @@ public class MoreOresModCore {
 	public static Item foodGreenMint;
 	public static Item foodMint;
 	public static Item foodCheese;
+	public static Item foodBacon;
 	
 	//Biome
 	public static BiomeGenBase biomeCandy;
@@ -146,6 +156,7 @@ public class MoreOresModCore {
 		foodGreenMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("GreenMint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":GreenMint");
 		foodMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("Mint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Mint");
 		foodCheese = new ItemFood(4, 0.6F, false).setUnlocalizedName("Cheese").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Cheese");
+		foodBacon = new ItemFood(4, 1.0F, false).setUnlocalizedName("Bacon").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Bacon");
 
 		//Items
 		itemRuby = new NCItems().setUnlocalizedName("Ruby");
@@ -155,17 +166,22 @@ public class MoreOresModCore {
 		itemMintDust = new NCItems().setUnlocalizedName("MintDust");
 
 		//Blocks
-		oreRubyOre = new RubyOre(Material.rock).setBlockName("RubyOre");
 		blockRubyBlock = new RubyBlock(Material.iron).setBlockName("RubyBlock");
-		oreSapphireOre = new SapphireOre(Material.rock).setBlockName("SapphireOre");
 		blockSapphireBlock = new SapphireBlock(Material.iron).setBlockName("SapphireBlock");
+		blockIceingCake = new SurfaceCake(Material.cake).setBlockName("IceingCake");
+		blockChocolateCake = new ChocolateCake(Material.cake).setBlockName("ChocolateCake");
+
+		//Ores
+		oreRubyOre = new RubyOre(Material.rock).setBlockName("RubyOre");
+		oreSapphireOre = new SapphireOre(Material.rock).setBlockName("SapphireOre");
 		oreRedMintOre = new RedMintOre(Material.rock).setBlockName("RedMintOre");
 		oreGreenMintOre = new GreenMintOre(Material.rock).setBlockName("GreenMintOre");
 		oreMintOre = new MintOre(Material.rock).setBlockName("MintOre");
 		oreCheeseOre = new CheeseOre(Material.rock).setBlockName("CheeseOre");
 		oreGunpowderOre = new GunpowderOre(Material.rock).setBlockName("GunpowderOre");
-		blockIceingCake = new SurfaceCake(Material.cake).setBlockName("IceingCake");
-		blockChocolateCake = new ChocolateCake(Material.cake).setBlockName("ChocolateCake");
+		oreBaconOre = new BaconOre(Material.rock).setBlockName("BaconOre");
+		oreCarrotOre = new CarrotOre(Material.rock).setBlockName("CarrotOre");
+		oreMelonOre = new MelonOre(Material.rock).setBlockName("MelonOre");
 
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
@@ -192,7 +208,7 @@ public class MoreOresModCore {
 		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");		
 		
 		//Biome
-		biomeCandy = new BiomeGenCandy(137).setBiomeName("Cake").setTemperatureRainfall(1.2F, 0.9F);
+		biomeCandy = new BiomeGenCandy(137).setBiomeName("Cake").setTemperatureRainfall(0.95F, 0.9F).setColor(2250012);
 				
 		//Register Item
 		GameRegistry.registerItem(itemRuby, "Ruby");
@@ -202,17 +218,22 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(itemMintDust,  "MintDust");
 
 		//Register Block
-		GameRegistry.registerBlock(oreRubyOre, "RubyOre");
 		GameRegistry.registerBlock(blockRubyBlock, "RubyBlock");
-		GameRegistry.registerBlock(oreSapphireOre,  "SapphireOre");
 		GameRegistry.registerBlock(blockSapphireBlock,  "SapphireBlock");
+		GameRegistry.registerBlock(blockIceingCake,  "IceingCake");
+		GameRegistry.registerBlock(blockChocolateCake,  "ChocolateCake");
+		
+		//Register Ore
+		GameRegistry.registerBlock(oreRubyOre, "RubyOre");
+		GameRegistry.registerBlock(oreSapphireOre,  "SapphireOre");
 		GameRegistry.registerBlock(oreGreenMintOre,  "GreenMintOre");
 		GameRegistry.registerBlock(oreRedMintOre,  "RedMintOre");
 		GameRegistry.registerBlock(oreMintOre,  "MintOre");
 		GameRegistry.registerBlock(oreCheeseOre,  "CheeseOre");
 		GameRegistry.registerBlock(oreGunpowderOre,  "GunpowderOre");
-		GameRegistry.registerBlock(blockIceingCake,  "IceingCake");
-		GameRegistry.registerBlock(blockChocolateCake,  "ChocolateCake");
+		GameRegistry.registerBlock(oreBaconOre, "BaconOre");
+		GameRegistry.registerBlock(oreCarrotOre, "CarrotOre");
+		GameRegistry.registerBlock(oreMelonOre, "MelonOre");
 
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
@@ -243,8 +264,7 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(foodGreenMint, "GreenMint");
 		GameRegistry.registerItem(foodMint, "Mint");
 		GameRegistry.registerItem(foodCheese, "Cheese");
-
-		//Biomes
+		GameRegistry.registerItem(foodBacon, "Bacon");
 		
 		}
 	
@@ -284,35 +304,44 @@ public class MoreOresModCore {
 		ItemStack RedMintCandy = new ItemStack(MoreOresModCore.foodRedMint);
 		ItemStack GreenMintCandy = new ItemStack(MoreOresModCore.foodGreenMint);
 		ItemStack MintCandy = new ItemStack(MoreOresModCore.foodMint);
+		ItemStack CheeseStack = new ItemStack(MoreOresModCore.foodCheese);
+		ItemStack BaconStack = new ItemStack(MoreOresModCore.foodBacon);
+		ItemStack CarrotStack = new ItemStack(Items.carrot);
 
 		//Crafting Recipes
-		//Ruby -> Ruby Block
+		
+		//Ruby Block
 		GameRegistry.addRecipe(RubyBlockStack, 
 				"xxx", 
 				"xxx", 
 				"xxx",
 				'x', RubyStack);
-		//Ruby Block -> Ruby
+		
+		//Ruby
 		GameRegistry.addShapelessRecipe(MultiRubyStack, RubyBlockStack);
+		
 		//Ruby Pickaxe
 		GameRegistry.addRecipe(RubyPickaxeStack,
 				"xxx",
 				" s ",
 				" s ",
 				'x', RubyStack, 's', StickStack);
+		
 		//Ruby Axe
 		GameRegistry.addRecipe(RubyAxeStack, 
 				"xx ",
 				"xs ",
 				" s ",
 				'x', RubyStack, 's', StickStack);
-		//RubySword
+		
+		//Ruby Sword
 		GameRegistry.addRecipe(RubySwordStack, 
 				" x ",
 				" x ",
 				" s ",
 				'x', RubyStack, 's', StickStack);
-		//RubyHoe
+		
+		//Ruby Hoe
 		GameRegistry.addRecipe(RubyHoeStack,
 				"xx ",
 				" s ",
@@ -323,93 +352,110 @@ public class MoreOresModCore {
 				" s ",
 				" s ",
 				'x', RubyStack, 's', StickStack);
-		//RubySpade
+		
+		//Ruby Spade
 		GameRegistry.addRecipe(RubySpadeStack, 
 				" x ",
 				" s ",
 				" s ",
-				'x', RubyStack, 's', StickStack);
-		//RubyHelmet
+		'x', RubyStack, 's', StickStack);
+		
+		//Ruby Helmet
 		GameRegistry.addRecipe(RubyHelmStack,
 				"xxx",
 				"x x",
 				'x', RubyStack);
-		//RubyChest
+		
+		//Ruby Chest
 		GameRegistry.addRecipe(RubyChestStack, 
 				"x x",
 				"xxx",
 				"xxx",
 				'x', RubyStack);
-		//RubyLegs
+		
+		//Ruby Legs
 		GameRegistry.addRecipe(RubyLegsStack, 
 				"xxx",
 				"x x",
 				"x x",
 				'x', RubyStack);
-		//RubyBoots
+		
+		//Ruby Boots
 		GameRegistry.addRecipe(RubyBootsStack,
 				"   ",
 				"x x",
 				"x x",
 				'x', RubyStack);
-		//SapphireSword
+		
+		//Sapphire Sword
 		GameRegistry.addRecipe(SapphireSwordStack,
 				" d ",
 				" d ",
 				" s ",
 				'd', SapphireStack, 's', StickStack);
-		//SapphirePickaxe
+		
+		//Sapphire Pickaxe
 		GameRegistry.addRecipe(SapphirePickaxeStack, 
 				"ddd",
 				" s ",
 				" s ",
 				'd', SapphireStack, 's', StickStack);
-		//SapphireAxe
+		
+		//Sapphire Axe
 		GameRegistry.addRecipe(SapphireAxeStack,
 				"dd ",
 				"ds ",
 				" s ",
 				'd', SapphireStack, 's', StickStack);
-		//SapphireHoe
+		
+		//Sapphire Hoe
 		GameRegistry.addRecipe(SapphireHoeStack, 
 				"dd ",
 				" s ",
 				" s ",
 				'd', SapphireStack, 's', StickStack);
-		//SapphireSpade
+		
+		//Sapphire Spade
 		GameRegistry.addRecipe(SapphireSpadeStack,
 				" d ",
 				" s ",
 				" s ",
 				'd', SapphireStack, 's', StickStack);
-		//SapphireHelm
+		
+		//Sapphire Helm
 		GameRegistry.addRecipe(SapphireHelmStack,
 				"ddd",
 				"d d",
 				'd', SapphireStack);
-		//SapphireChest
+		
+		//Sapphire Chest
 		GameRegistry.addRecipe(SapphireChestStack,
 				"d d",
 				"ddd",
 				"ddd",
 				'd', SapphireStack);
-		//SapphireLegs
+		
+		//Sapphire Legs
 		GameRegistry.addRecipe(SapphireLegsStack,
 				"ddd",
 				"d d",
 				"d d",
 				'd', SapphireStack);
-		//SapphireBoots
+		
+		//Sapphire Boots
 		GameRegistry.addRecipe(SapphireBootsStack,
 				"   ",
 				"d d",
 				"d d",
 				'd', SapphireStack);
-		//GreenMintCandy
+		
+		//GreenMint Candy
 		GameRegistry.addShapelessRecipe(GreenMintCandy, GreenMintDustStack);
-		//RedMintCandy
+		
+		//RedMint Candy
 		GameRegistry.addShapelessRecipe(RedMintCandy, RedMintDustStack);
-		//MintCandy
+		
+		//Mint Candy
 		GameRegistry.addShapelessRecipe(MintCandy, MintDustStack);
 		
 		//Smelting Recipes
@@ -418,12 +464,14 @@ public class MoreOresModCore {
 		GameRegistry.addSmelting(MoreOresModCore.oreRedMintOre, RedMintDustStack, 5);
 		GameRegistry.addSmelting(MoreOresModCore.oreGreenMintOre, GreenMintDustStack, 5);
 		GameRegistry.addSmelting(MoreOresModCore.oreMintOre, MintDustStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreCheeseOre, CheeseStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreBaconOre, BaconStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreCarrotOre, CarrotStack, 5);
+		
 	}
-	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent Posteven) {	
     	WorldType BIOMES = new WorldTypeMoreOresModBiomes(3, "Biomes");
-
-		
 	}
 }
+//You are loved and always have been loved by many.... <3

@@ -65,6 +65,24 @@ public class BetterWorldGenerator implements IWorldGenerator{
 		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
 		 		(new WorldGenMinable(MoreOresModCore.oreCheeseOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
 		 	}
+			for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
+		 		(new WorldGenMinable(MoreOresModCore.oreBaconOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	}
+			for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
+		 		(new WorldGenMinable(MoreOresModCore.oreCarrotOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	}
+			for(int k = 0; k < 10; k++) {
+		 		int firstBlockXCoord = chunkX + random.nextInt(16);
+		 		int firstBlockYCoord = random.nextInt(64);
+		 		int firstBlockZCoord = chunkZ + random.nextInt(16);
+		 		(new WorldGenMinable(MoreOresModCore.oreMelonOre, 4)).generate(world, random, firstBlockXCoord, firstBlockYCoord, firstBlockZCoord);
+		 	}
 	}
 
 	private void generateNether(World world, Random random, int i, int j) {		

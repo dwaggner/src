@@ -23,6 +23,10 @@ public class SurfaceCake extends Block{
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setBlockTextureName("IceingCake");
 		this.isOpaqueCube();
+		this.setHardness(0.2F);
+		this.setHarvestLevel("shovel", 0);
+
+
 	}
 	
 	@SideOnly(Side.CLIENT)

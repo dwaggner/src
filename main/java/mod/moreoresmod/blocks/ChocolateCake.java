@@ -23,6 +23,9 @@ public class ChocolateCake extends Block{
 		this.setStepSound(soundTypeSnow);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setBlockTextureName("ChocolateCake");
+		this.setHardness(0.2F);
+		this.setHarvestLevel("shovel", 0);
+
 	}
 	
 	@SideOnly(Side.CLIENT)
