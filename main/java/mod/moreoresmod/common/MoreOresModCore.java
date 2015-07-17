@@ -1,19 +1,21 @@
 package mod.moreoresmod.common;
 
 import com.moreoresmod.biome.BiomeGenCandy;
-import com.moreoresmod.dimension.dimensionRegistry;
+import com.moreoresmod.biome.BiomeRegistry;
+import com.moreoresmod.biome.WorldTypeMoreOresModBiomes;
 import com.moreoresmod.lib.RefStrings;
+import com.moreoresmod.mod.handler.EntityHandler;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import mod.moreoresmod.blocks.CandyPortal;
 import mod.moreoresmod.blocks.CheeseOre;
+import mod.moreoresmod.blocks.ChocolateCake;
 import mod.moreoresmod.blocks.GreenMintOre;
 import mod.moreoresmod.blocks.GunpowderOre;
 import mod.moreoresmod.blocks.MintOre;
@@ -22,6 +24,7 @@ import mod.moreoresmod.blocks.RubyBlock;
 import mod.moreoresmod.blocks.RubyOre;
 import mod.moreoresmod.blocks.SapphireBlock;
 import mod.moreoresmod.blocks.SapphireOre;
+import mod.moreoresmod.blocks.SurfaceCake;
 import mod.moreoresmod.common.armor.RubyArmor;
 import mod.moreoresmod.common.armor.SapphireArmor;
 import mod.moreoresmod.items.NCItems;
@@ -35,6 +38,7 @@ import mod.moreoresmod.items.SapphireHoe;
 import mod.moreoresmod.items.SapphirePickaxe;
 import mod.moreoresmod.items.SapphireSpade;
 import mod.moreoresmod.items.SapphireSword;
+import mod.moreoresmod.mod.entity.entityCakeCow;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -46,8 +50,6 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = MoreOresModCore.modid, version = MoreOresModCore.version)
@@ -56,6 +58,9 @@ public class MoreOresModCore {
 	public static final String modid = "MoreOresMod";
 	public static final String version = "Alpha 0.0";
 	public static int dimensionId = 8;
+	
+	@Instance
+	public static MoreOresModCore instance;
 	
 	//Tool Material
 	public static ToolMaterial RubyMaterial = EnumHelper.addToolMaterial("RubyMaterial", 2, 750, 6.0F, 2.0F, 10);
@@ -81,7 +86,8 @@ public class MoreOresModCore {
 	public static Block oreMintOre;
 	public static Block oreCheeseOre;
 	public static Block oreGunpowderOre;
-	public static Block CandyPortal;
+	public static Block blockIceingCake;
+	public static Block blockChocolateCake;
 
 	//public static Tools
 	public static Item itemRubySword;
@@ -133,6 +139,8 @@ public class MoreOresModCore {
 	public static void PreInit(FMLPreInitializationEvent Proevent) {
 		proxy.registerRenderInfo();
 		
+		//MainRegistry
+		BiomeRegistry.mainRegsitry();
 		
 		//Food
 		foodRedMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("RedMint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":RedMint");
@@ -157,7 +165,8 @@ public class MoreOresModCore {
 		oreMintOre = new MintOre(Material.rock).setBlockName("MintOre");
 		oreCheeseOre = new CheeseOre(Material.rock).setBlockName("CheeseOre");
 		oreGunpowderOre = new GunpowderOre(Material.rock).setBlockName("GunpowderOre");
-		CandyPortal = new CandyPortal((Integer) 8).setBlockName("CandyPortalBlock");
+		blockIceingCake = new SurfaceCake(Material.cake).setBlockName("IceingCake");
+		blockChocolateCake = new ChocolateCake(Material.cake).setBlockName("ChocolateCake");
 
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
@@ -184,12 +193,8 @@ public class MoreOresModCore {
 		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");		
 		
 		//Biome
-		biomeCandy = new BiomeGenCandy(137);
-		
-		//dimension
-		DimensionManager.registerProviderType(MoreOresModCore.dimensionId, dimensionRegistry.class, false);
-		DimensionManager.registerDimension(MoreOresModCore.dimensionId, MoreOresModCore.dimensionId);
-		
+		biomeCandy = new BiomeGenCandy(137).setBiomeName("Cake").setTemperatureRainfall(1.2F, 0.9F);
+				
 		//Register Item
 		GameRegistry.registerItem(itemRuby, "Ruby");
 		GameRegistry.registerItem(itemSapphire, "Sapphire");
@@ -207,8 +212,9 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(oreMintOre,  "MintOre");
 		GameRegistry.registerBlock(oreCheeseOre,  "CheeseOre");
 		GameRegistry.registerBlock(oreGunpowderOre,  "GunpowderOre");
-		GameRegistry.registerBlock(CandyPortal, modid + (CandyPortal.getUnlocalizedName().substring(5)));
-		
+		GameRegistry.registerBlock(blockIceingCake,  "IceingCake");
+		GameRegistry.registerBlock(blockChocolateCake,  "ChocolateCake");
+
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
 		GameRegistry.registerItem(itemRubyAxe, "RubyAxe");
@@ -239,6 +245,11 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(foodMint, "Mint");
 		GameRegistry.registerItem(foodCheese, "Cheese");
 
+		//Biomes
+		
+		
+		//Entity
+		EntityHandler.registerAnimals(entityCakeCow.class, "CakeCow");
 	}
 	
 	@EventHandler
@@ -415,6 +426,7 @@ public class MoreOresModCore {
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent Posteven) {	
+    	WorldType BIOMES = new WorldTypeMoreOresModBiomes(3, "Biomes");
 
 		
 	}

@@ -8,6 +8,12 @@ tile.GreenMintOre.name=Green Mint Ore
 tile.MintOre.name=Mint Ore
 tile.CheeseOre.name=Cheese Ore
 tile.GunpowderOre.name=Gunpowder Ore
+tile.ChocolateCake.name=Chocolate Cake Block
+tile.IceingCake.name=Chocolate Cake With Iceing
+World Type
+generator.Biomes=Custom Biomes
+Biome
+biome.Cake=Cake
 Items
 item.Ruby.name=Ruby
 item.RubySword.name=Ruby Sword
