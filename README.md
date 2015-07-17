@@ -11,37 +11,37 @@ Updates:
 Alpha 0.0 - Beta 0.1
 
 Biomes:
-Cake Biome
+Cake Biome,
 
 Ores:
-Sapphire Ore
-Ruby Ore
-Cheese Ore
-Carrot Ore
-Melon Ore
-Bacon Ore
-Green Mint ore
-Red Mint Ore
-Mint Ore
-Gun Powder Ore
+Sapphire Ore,
+Ruby Ore,
+Cheese Ore,
+Carrot Ore,
+Melon Ore,
+Bacon Ore,
+Green Mint ore,
+Red Mint Ore,
+Mint Ore,
+Gun Powder Ore,
 
 Tools/Armors:
-Sapphire Tools/Armor
-Ruby Tools/Armor
+Sapphire Tools/Armor,
+Ruby Tools/Armor,
 
 Foods:
-Bacon
-Red Mint Candy
-Green Mint Candy
-Mint Candy
-Chocolate Cake Block
-Chocolate Iceing Cake Block
+Bacon,
+Red Mint Candy,
+Green Mint Candy,
+Mint Candy,
+Chocolate Cake Block,
+Chocolate Iceing Cake Block,
 
 Blocks:
-Ruby Block
-Sapphire Block
+Ruby Block,
+Sapphire Block,
 
 Materials:
-Green Mint Dust
-Red Mint Dust
-Mint Dust
+Green Mint Dust,
+Red Mint Dust,
+Mint Dust,
