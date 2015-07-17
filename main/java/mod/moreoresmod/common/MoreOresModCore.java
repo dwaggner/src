@@ -38,7 +38,6 @@ import mod.moreoresmod.items.SapphireHoe;
 import mod.moreoresmod.items.SapphirePickaxe;
 import mod.moreoresmod.items.SapphireSpade;
 import mod.moreoresmod.items.SapphireSword;
-import mod.moreoresmod.mod.entity.entityCakeCow;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -247,10 +246,7 @@ public class MoreOresModCore {
 
 		//Biomes
 		
-		
-		//Entity
-		EntityHandler.registerAnimals(entityCakeCow.class, "CakeCow");
-	}
+		}
 	
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
