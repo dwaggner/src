@@ -45,3 +45,6 @@ Materials:
 Green Mint Dust,
 Red Mint Dust,
 Mint Dust,
+
+Mobs:
+Cake Cow <3 
