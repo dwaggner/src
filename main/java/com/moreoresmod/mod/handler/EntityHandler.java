@@ -17,7 +17,7 @@ public class EntityHandler {
 		int subColor = random.nextInt() * 16777215;
 
 		EntityRegistry.registerGlobalEntityID(entityClass, name, entityID);
-		EntityRegistry.addSpawn(entityClass, 50, 2, 4 , EnumCreatureType.ambient, MoreOresModCore.biomeCandy);
+		EntityRegistry.addSpawn(entityClass, 50, 4, 8 , EnumCreatureType.ambient, MoreOresModCore.biomeCandy);
 		EntityRegistry.registerModEntity(entityClass, name, entityID, MoreOresModCore.instance, 64, 1, true);
 		EntityList.entityEggs.put(Integer.valueOf(entityID), new EntityList.EntityEggInfo(entityID, mainColor, subColor));
 		

@@ -13,6 +13,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import mod.moreoresmod.blocks.BaconOre;
 import mod.moreoresmod.blocks.CarrotOre;
@@ -41,6 +42,7 @@ import mod.moreoresmod.items.SapphireHoe;
 import mod.moreoresmod.items.SapphirePickaxe;
 import mod.moreoresmod.items.SapphireSpade;
 import mod.moreoresmod.items.SapphireSword;
+import mod.moreoresmod.mod.entity.EntityCakeCow;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -138,7 +140,7 @@ public class MoreOresModCore {
 	public static Item foodCheese;
 	public static Item foodBacon;
 	
-	//Biome
+	//public static Biome
 	public static BiomeGenBase biomeCandy;
 	
 	@SidedProxy(clientSide = RefStrings.CLIENTSIDE , serverSide = RefStrings.SERVERSIDE)
@@ -266,6 +268,10 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(foodCheese, "Cheese");
 		GameRegistry.registerItem(foodBacon, "Bacon");
 		
+		//Register Entities
+		EntityHandler.registerAnimals(EntityCakeCow.class, "CandyCow");
+		EntityRegistry.registerGlobalEntityID(EntityCakeCow.class, "CakeCow", 500);
+		EntityRegistry.registerModEntity(EntityCakeCow.class, "CakeCow", 500, MoreOresModCore.modid, 64, 1, true);	
 		}
 	
 	@EventHandler
@@ -307,6 +313,7 @@ public class MoreOresModCore {
 		ItemStack CheeseStack = new ItemStack(MoreOresModCore.foodCheese);
 		ItemStack BaconStack = new ItemStack(MoreOresModCore.foodBacon);
 		ItemStack CarrotStack = new ItemStack(Items.carrot);
+		ItemStack MelonStack = new ItemStack(Items.melon);
 
 		//Crafting Recipes
 		
@@ -467,6 +474,7 @@ public class MoreOresModCore {
 		GameRegistry.addSmelting(MoreOresModCore.oreCheeseOre, CheeseStack, 5);
 		GameRegistry.addSmelting(MoreOresModCore.oreBaconOre, BaconStack, 5);
 		GameRegistry.addSmelting(MoreOresModCore.oreCarrotOre, CarrotStack, 5);
+		GameRegistry.addSmelting(MoreOresModCore.oreMelonOre, MelonStack, 5);
 		
 	}
 	@EventHandler
