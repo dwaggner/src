@@ -15,6 +15,8 @@ tile.IceingCake.name=Chocolate Cake With Iceing
 tile.BaconOre.name=Bacon Ore
 tile.CarrotOre.name=Carrot Ore
 tile.MelonOre.name=Melon Ore
+tile.AppleOre.name=Apple Ore
+tile.AppleBlock.name=Apple Block
 World Type
 generator.Biomes=Custom Biomes
 Items
@@ -47,3 +49,5 @@ item.SapphireHelm.name=Sapphire Helmet
 item.SapphireChest.name=Sapphire Chestplate
 item.SapphireLegs.name=Sapphire Leggings
 item.SapphireBoots.name=Sapphire Boots
+Entity
+entity.CakeCow.name=Cake Cow

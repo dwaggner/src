@@ -10,6 +10,8 @@ public class ClientProxy extends ServerProxy {
 	public void registerRenderInfo() {
 		
 		//Entities
+		
+		//Cake Cow
 		RenderingRegistry.registerEntityRenderingHandler(EntityCakeCow.class, new RenderCakeCow(new ModelCakeCow(), 0.3F));
 	}
 

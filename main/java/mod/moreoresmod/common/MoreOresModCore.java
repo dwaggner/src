@@ -15,6 +15,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import mod.moreoresmod.blocks.AppleBlock;
+import mod.moreoresmod.blocks.AppleOre;
 import mod.moreoresmod.blocks.BaconOre;
 import mod.moreoresmod.blocks.CarrotOre;
 import mod.moreoresmod.blocks.CheeseOre;
@@ -86,6 +88,7 @@ public class MoreOresModCore {
 	public static Block blockSapphireBlock;
 	public static Block blockIceingCake;
 	public static Block blockChocolateCake;
+	public static Block blockAppleBlock;
 	
 	//public static ores
 	public static Block oreRubyOre;
@@ -98,6 +101,7 @@ public class MoreOresModCore {
 	public static Block oreBaconOre;
 	public static Block oreCarrotOre;
 	public static Block oreMelonOre;
+	public static Block oreAppleOre;
 
 	//public static Tools
 	public static Item itemRubySword;
@@ -172,6 +176,7 @@ public class MoreOresModCore {
 		blockSapphireBlock = new SapphireBlock(Material.iron).setBlockName("SapphireBlock");
 		blockIceingCake = new SurfaceCake(Material.cake).setBlockName("IceingCake");
 		blockChocolateCake = new ChocolateCake(Material.cake).setBlockName("ChocolateCake");
+		blockAppleBlock = new AppleBlock(Material.wood).setBlockName("AppleBlock");
 
 		//Ores
 		oreRubyOre = new RubyOre(Material.rock).setBlockName("RubyOre");
@@ -184,6 +189,7 @@ public class MoreOresModCore {
 		oreBaconOre = new BaconOre(Material.rock).setBlockName("BaconOre");
 		oreCarrotOre = new CarrotOre(Material.rock).setBlockName("CarrotOre");
 		oreMelonOre = new MelonOre(Material.rock).setBlockName("MelonOre");
+		oreAppleOre = new AppleOre(Material.rock).setBlockName("AppleOre");
 
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
@@ -224,6 +230,7 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(blockSapphireBlock,  "SapphireBlock");
 		GameRegistry.registerBlock(blockIceingCake,  "IceingCake");
 		GameRegistry.registerBlock(blockChocolateCake,  "ChocolateCake");
+		GameRegistry.registerBlock(blockAppleBlock, "AppleBlock");
 		
 		//Register Ore
 		GameRegistry.registerBlock(oreRubyOre, "RubyOre");
@@ -236,7 +243,8 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(oreBaconOre, "BaconOre");
 		GameRegistry.registerBlock(oreCarrotOre, "CarrotOre");
 		GameRegistry.registerBlock(oreMelonOre, "MelonOre");
-
+		GameRegistry.registerBlock(oreAppleOre,  "AppleOre");
+		
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
 		GameRegistry.registerItem(itemRubyAxe, "RubyAxe");
@@ -269,7 +277,7 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(foodBacon, "Bacon");
 		
 		//Register Entities
-		EntityHandler.registerAnimals(EntityCakeCow.class, "CandyCow");
+		EntityHandler.registerAnimals(EntityCakeCow.class, "CakeCow");
 		EntityRegistry.registerGlobalEntityID(EntityCakeCow.class, "CakeCow", 500);
 		EntityRegistry.registerModEntity(EntityCakeCow.class, "CakeCow", 500, MoreOresModCore.modid, 64, 1, true);	
 		}
@@ -314,6 +322,9 @@ public class MoreOresModCore {
 		ItemStack BaconStack = new ItemStack(MoreOresModCore.foodBacon);
 		ItemStack CarrotStack = new ItemStack(Items.carrot);
 		ItemStack MelonStack = new ItemStack(Items.melon);
+		ItemStack AppleStack = new ItemStack(Items.apple);
+		ItemStack AppleBlockStack = new ItemStack(MoreOresModCore.blockAppleBlock);
+		ItemStack MultiAppleStack = new ItemStack(Items.apple, 9);
 
 		//Crafting Recipes
 		
@@ -323,9 +334,6 @@ public class MoreOresModCore {
 				"xxx", 
 				"xxx",
 				'x', RubyStack);
-		
-		//Ruby
-		GameRegistry.addShapelessRecipe(MultiRubyStack, RubyBlockStack);
 		
 		//Ruby Pickaxe
 		GameRegistry.addRecipe(RubyPickaxeStack,
@@ -456,6 +464,15 @@ public class MoreOresModCore {
 				"d d",
 				'd', SapphireStack);
 		
+		//Apple Block
+		GameRegistry.addRecipe(AppleBlockStack,
+				"aaa",
+				"aaa",
+				"aaa",
+				'a', AppleStack);
+		
+		//Shapeless Crafting Recipies
+		
 		//GreenMint Candy
 		GameRegistry.addShapelessRecipe(GreenMintCandy, GreenMintDustStack);
 		
@@ -465,16 +482,43 @@ public class MoreOresModCore {
 		//Mint Candy
 		GameRegistry.addShapelessRecipe(MintCandy, MintDustStack);
 		
+		//Ruby
+		GameRegistry.addShapelessRecipe(MultiRubyStack, RubyBlockStack);
+		
+		//Apple
+		GameRegistry.addShapelessRecipe(MultiAppleStack, AppleBlockStack);
+		
 		//Smelting Recipes
+		
+		//Ruby Ore -> Ruby
 		GameRegistry.addSmelting(MoreOresModCore.oreRubyOre, RubyStack, 5);
+		
+		//Sapphire Ore -> Sapphire
 		GameRegistry.addSmelting(MoreOresModCore.oreSapphireOre, SapphireStack, 5);
+		
+		//Red Mint Ore -> Red Mint dust
 		GameRegistry.addSmelting(MoreOresModCore.oreRedMintOre, RedMintDustStack, 5);
+		
+		//Green Mint Ore -> Green Mint Dust
 		GameRegistry.addSmelting(MoreOresModCore.oreGreenMintOre, GreenMintDustStack, 5);
+		
+		//Mint Ore -> Mint Dust
 		GameRegistry.addSmelting(MoreOresModCore.oreMintOre, MintDustStack, 5);
+		
+		//Cheese Ore -> Cheese
 		GameRegistry.addSmelting(MoreOresModCore.oreCheeseOre, CheeseStack, 5);
+		
+		//Bacon Ore -> Bacon
 		GameRegistry.addSmelting(MoreOresModCore.oreBaconOre, BaconStack, 5);
+		
+		//Carrot Ore -> Carrot
 		GameRegistry.addSmelting(MoreOresModCore.oreCarrotOre, CarrotStack, 5);
+		
+		//Melon Ore -> Melon
 		GameRegistry.addSmelting(MoreOresModCore.oreMelonOre, MelonStack, 5);
+		
+		//Apple Ore -> Apple
+		GameRegistry.addSmelting(MoreOresModCore.oreAppleOre, AppleStack, 5);
 		
 	}
 	@EventHandler
