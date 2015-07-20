@@ -1,5 +1,6 @@
 package mod.moreoresmod.common;
 
+import com.moreoresmod.biome.BiomeGenApple;
 import com.moreoresmod.biome.BiomeGenCandy;
 import com.moreoresmod.biome.BiomeRegistry;
 import com.moreoresmod.biome.WorldTypeMoreOresModBiomes;
@@ -146,6 +147,7 @@ public class MoreOresModCore {
 	
 	//public static Biome
 	public static BiomeGenBase biomeCandy;
+	public static BiomeGenBase biomeApple;
 	
 	@SidedProxy(clientSide = RefStrings.CLIENTSIDE , serverSide = RefStrings.SERVERSIDE)
 	public static ServerProxy proxy;
@@ -216,8 +218,9 @@ public class MoreOresModCore {
 		armorSapphireBoots = new SapphireArmor(SapphireArmorMaterial, armorSapphireHelmID, 3).setUnlocalizedName("SapphireBoots");		
 		
 		//Biome
-		biomeCandy = new BiomeGenCandy(137).setBiomeName("Cake").setTemperatureRainfall(0.95F, 0.9F).setColor(2250012);
-				
+		biomeCandy = new BiomeGenCandy(137).setBiomeName("Cake Biome").setTemperatureRainfall(0.95F, 0.9F).setColor(2250012);
+		biomeApple = new BiomeGenApple(138).setBiomeName("Apple Biome").setTemperatureRainfall(0.95F, 0.9F).setColor(2250012);
+		
 		//Register Item
 		GameRegistry.registerItem(itemRuby, "Ruby");
 		GameRegistry.registerItem(itemSapphire, "Sapphire");

@@ -40,13 +40,15 @@ public class MoreOresModBGenLayerBiome extends GenLayer
             desertBiomes.add(new BiomeEntry(BiomeGenBase.plains, 10));
             desertBiomes.add(new BiomeEntry(BiomeGenBase.taiga, 10));
             desertBiomes.add(new BiomeEntry(BiomeRegistry.biomeCandy, 10));
+            desertBiomes.add(new BiomeEntry(BiomeRegistry.biomeApple, 10));
+
         }
         else
         {
             desertBiomes.add(new BiomeEntry(BiomeGenBase.desert, 30));
             desertBiomes.add(new BiomeEntry(BiomeGenBase.savanna, 20));
             desertBiomes.add(new BiomeEntry(BiomeGenBase.plains, 10));
-            desertBiomes.add(new BiomeEntry(BiomeRegistry.biomeCandy, 10));
+            desertBiomes.add(new BiomeEntry(BiomeRegistry.biomeApple, 10));
         }
     }
 
