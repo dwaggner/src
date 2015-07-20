@@ -5,10 +5,11 @@ This mod adds some new ores inot minecraft aswell as some really cool but random
 Mod Creators:
 Daniel Waggner
 
-This mod is very WIP. First release not yet available.
+This mod is very WIP. First release is now available!!
+http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2479932-wip-minecraft-random-features-mod
 
 Updates:
-Alpha 0.0 - Beta 0.1
+Alpha 0.0 - Beta 1.0
 
 Biomes:
 Cake Biome,
