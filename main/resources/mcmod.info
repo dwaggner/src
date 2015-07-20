@@ -1,7 +1,7 @@
 [
 {
   "modid": "MoreOresMod",
-  "name": "Bonus Ores Mod",
+  "name": "Random Features Mod",
   "description": "This mod adds some bonus and kind of random ores into your minecraft world!",
   "version": "Alpha 0.0",
   "mcversion": "1.7.10",
@@ -14,4 +14,3 @@
   "dependencies": []
 }
 ]
-
