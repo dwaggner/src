@@ -19,9 +19,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import mod.moreoresmod.blocks.AppleBlock;
 import mod.moreoresmod.blocks.AppleOre;
 import mod.moreoresmod.blocks.BaconOre;
+import mod.moreoresmod.blocks.BrownieBlock;
 import mod.moreoresmod.blocks.CarrotOre;
 import mod.moreoresmod.blocks.CheeseOre;
 import mod.moreoresmod.blocks.ChocolateCake;
+import mod.moreoresmod.blocks.ChocolateOre;
 import mod.moreoresmod.blocks.GreenMintOre;
 import mod.moreoresmod.blocks.GunpowderOre;
 import mod.moreoresmod.blocks.MelonOre;
@@ -90,6 +92,7 @@ public class MoreOresModCore {
 	public static Block blockIceingCake;
 	public static Block blockChocolateCake;
 	public static Block blockAppleBlock;
+	public static Block blockBrownieBlock;
 	
 	//public static ores
 	public static Block oreRubyOre;
@@ -103,6 +106,7 @@ public class MoreOresModCore {
 	public static Block oreCarrotOre;
 	public static Block oreMelonOre;
 	public static Block oreAppleOre;
+	public static Block oreChocolateOre;
 
 	//public static Tools
 	public static Item itemRubySword;
@@ -144,6 +148,7 @@ public class MoreOresModCore {
 	public static Item foodMint;
 	public static Item foodCheese;
 	public static Item foodBacon;
+	public static Item foodChocolate;
 	
 	//public static Biome
 	public static BiomeGenBase biomeCandy;
@@ -165,7 +170,8 @@ public class MoreOresModCore {
 		foodMint = new ItemFood(2, 0.2F, false).setUnlocalizedName("Mint").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Mint");
 		foodCheese = new ItemFood(4, 0.6F, false).setUnlocalizedName("Cheese").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Cheese");
 		foodBacon = new ItemFood(4, 1.0F, false).setUnlocalizedName("Bacon").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Bacon");
-
+		foodChocolate = new ItemFood(4, 1.0F, false).setUnlocalizedName("Chocolate").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Chocolate");
+		
 		//Items
 		itemRuby = new NCItems().setUnlocalizedName("Ruby");
 		itemSapphire = new NCItems().setUnlocalizedName("Sapphire");
@@ -179,6 +185,7 @@ public class MoreOresModCore {
 		blockIceingCake = new SurfaceCake(Material.cake).setBlockName("IceingCake");
 		blockChocolateCake = new ChocolateCake(Material.cake).setBlockName("ChocolateCake");
 		blockAppleBlock = new AppleBlock(Material.wood).setBlockName("AppleBlock");
+		blockBrownieBlock = new BrownieBlock(Material.cake).setBlockName("Brownie").setBlockTextureName("Brownie").setCreativeTab(CreativeTabs.tabBlock);
 
 		//Ores
 		oreRubyOre = new RubyOre(Material.rock).setBlockName("RubyOre");
@@ -192,6 +199,7 @@ public class MoreOresModCore {
 		oreCarrotOre = new CarrotOre(Material.rock).setBlockName("CarrotOre");
 		oreMelonOre = new MelonOre(Material.rock).setBlockName("MelonOre");
 		oreAppleOre = new AppleOre(Material.rock).setBlockName("AppleOre");
+		oreChocolateOre = new ChocolateOre(Material.rock).setBlockName("ChocolateOre");
 
 		//Tools
 		itemRubySword = new RubySword(RubyMaterial).setUnlocalizedName("RubySword");
@@ -234,6 +242,7 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(blockIceingCake,  "IceingCake");
 		GameRegistry.registerBlock(blockChocolateCake,  "ChocolateCake");
 		GameRegistry.registerBlock(blockAppleBlock, "AppleBlock");
+		GameRegistry.registerBlock(blockBrownieBlock, "BrownieBlock");
 		
 		//Register Ore
 		GameRegistry.registerBlock(oreRubyOre, "RubyOre");
@@ -247,6 +256,7 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(oreCarrotOre, "CarrotOre");
 		GameRegistry.registerBlock(oreMelonOre, "MelonOre");
 		GameRegistry.registerBlock(oreAppleOre,  "AppleOre");
+		GameRegistry.registerBlock(oreChocolateOre,  "ChocolateOre");
 		
 		//Register Tools
 		GameRegistry.registerItem(itemRubySword, "RubySword");
@@ -278,6 +288,7 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(foodMint, "Mint");
 		GameRegistry.registerItem(foodCheese, "Cheese");
 		GameRegistry.registerItem(foodBacon, "Bacon");
+		GameRegistry.registerItem(foodChocolate, "Chocolate");
 		
 		//Register Entities
 		EntityHandler.registerAnimals(EntityCakeCow.class, "CakeCow");
@@ -328,6 +339,7 @@ public class MoreOresModCore {
 		ItemStack AppleStack = new ItemStack(Items.apple);
 		ItemStack AppleBlockStack = new ItemStack(MoreOresModCore.blockAppleBlock);
 		ItemStack MultiAppleStack = new ItemStack(Items.apple, 9);
+		ItemStack ChocolateStack = new ItemStack(MoreOresModCore.foodChocolate);
 
 		//Crafting Recipes
 		
@@ -400,7 +412,6 @@ public class MoreOresModCore {
 		
 		//Ruby Boots
 		GameRegistry.addRecipe(RubyBootsStack,
-				"   ",
 				"x x",
 				"x x",
 				'x', RubyStack);
@@ -462,7 +473,6 @@ public class MoreOresModCore {
 		
 		//Sapphire Boots
 		GameRegistry.addRecipe(SapphireBootsStack,
-				"   ",
 				"d d",
 				"d d",
 				'd', SapphireStack);
@@ -523,10 +533,16 @@ public class MoreOresModCore {
 		//Apple Ore -> Apple
 		GameRegistry.addSmelting(MoreOresModCore.oreAppleOre, AppleStack, 5);
 		
+		//Chocolate Ore -> Chocolate Candy Bar
+		GameRegistry.addSmelting(MoreOresModCore.oreChocolateOre, ChocolateStack, 5);
+		
 	}
+	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent Posteven) {	
     	WorldType BIOMES = new WorldTypeMoreOresModBiomes(3, "Biomes");
+	
 	}
+
 }
 //You are loved and always have been loved by many.... <3
