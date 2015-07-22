@@ -55,6 +55,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemBucketMilk;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.WorldType;
@@ -149,6 +150,7 @@ public class MoreOresModCore {
 	public static Item foodCheese;
 	public static Item foodBacon;
 	public static Item foodChocolate;
+	public static Item foodChocolateMilk;
 	
 	//public static Biome
 	public static BiomeGenBase biomeCandy;
@@ -171,6 +173,7 @@ public class MoreOresModCore {
 		foodCheese = new ItemFood(4, 0.6F, false).setUnlocalizedName("Cheese").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Cheese");
 		foodBacon = new ItemFood(4, 1.0F, false).setUnlocalizedName("Bacon").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Bacon");
 		foodChocolate = new ItemFood(4, 1.0F, false).setUnlocalizedName("Chocolate").setCreativeTab(CreativeTabs.tabFood).setTextureName(MoreOresModCore.modid + ":Chocolate");
+		foodChocolateMilk = new ItemBucketMilk().setUnlocalizedName("ChocolateMilk").setCreativeTab(CreativeTabs.tabMisc).setTextureName(MoreOresModCore.modid + ":ChocolateMilk");
 		
 		//Items
 		itemRuby = new NCItems().setUnlocalizedName("Ruby");
@@ -289,6 +292,7 @@ public class MoreOresModCore {
 		GameRegistry.registerItem(foodCheese, "Cheese");
 		GameRegistry.registerItem(foodBacon, "Bacon");
 		GameRegistry.registerItem(foodChocolate, "Chocolate");
+		GameRegistry.registerItem(foodChocolateMilk, "ChocolateMilk");
 		
 		//Register Entities
 		EntityHandler.registerAnimals(EntityCakeCow.class, "CakeCow");

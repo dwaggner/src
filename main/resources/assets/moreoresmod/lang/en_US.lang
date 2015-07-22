@@ -18,6 +18,7 @@ tile.MelonOre.name=Melon Ore
 tile.AppleOre.name=Apple Ore
 tile.AppleBlock.name=Apple Block
 tile.ChocolateOre.name=Chocolate Ore
+tile.Brownie.name=Brownie
 World Type
 generator.Biomes=Custom Biomes
 Items
@@ -42,6 +43,7 @@ item.Mint.name=Mint Candy
 item.Cheese.name=Cheese
 item.Bacon.name=Bacon
 item.Chocolate.name=Chocolate Candy Bar
+item.ChocolateMilk.name=Chocolate Milk Bucket
 Armor
 item.RubyHelm.name= Ruby Helmet
 item.RubyLegs.name=Ruby Leggings
