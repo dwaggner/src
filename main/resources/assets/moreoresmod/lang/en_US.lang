@@ -19,6 +19,7 @@ tile.AppleOre.name=Apple Ore
 tile.AppleBlock.name=Apple Block
 tile.ChocolateOre.name=Chocolate Ore
 tile.Brownie.name=Brownie
+tile.OakTable.name=Oak Table
 World Type
 generator.Biomes=Custom Biomes
 Items

@@ -4,4 +4,8 @@ public class ServerProxy {
 	public void registerRenderInfo() {
 		
 	}
+	
+	public void registerTileEntitySpecialRenderer(){
+		
+	}
 }

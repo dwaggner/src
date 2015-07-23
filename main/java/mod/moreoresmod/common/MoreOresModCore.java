@@ -28,6 +28,7 @@ import mod.moreoresmod.blocks.GreenMintOre;
 import mod.moreoresmod.blocks.GunpowderOre;
 import mod.moreoresmod.blocks.MelonOre;
 import mod.moreoresmod.blocks.MintOre;
+import mod.moreoresmod.blocks.OakBlock;
 import mod.moreoresmod.blocks.RedMintOre;
 import mod.moreoresmod.blocks.RubyBlock;
 import mod.moreoresmod.blocks.RubyOre;
@@ -95,6 +96,9 @@ public class MoreOresModCore {
 	public static Block blockAppleBlock;
 	public static Block blockBrownieBlock;
 	
+	//Furnature
+	public static Block blockOakTable;
+	
 	//public static ores
 	public static Block oreRubyOre;
 	public static Block oreSapphireOre;
@@ -161,6 +165,8 @@ public class MoreOresModCore {
 	
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent Proevent) {
+		
+		//Renderers
 		proxy.registerRenderInfo();
 		
 		//MainRegistry
@@ -190,6 +196,9 @@ public class MoreOresModCore {
 		blockAppleBlock = new AppleBlock(Material.wood).setBlockName("AppleBlock");
 		blockBrownieBlock = new BrownieBlock(Material.cake).setBlockName("Brownie").setBlockTextureName("Brownie").setCreativeTab(CreativeTabs.tabBlock);
 
+		//Furnature
+		blockOakTable = new OakBlock(Material.wood).setBlockName("OakTable");
+		
 		//Ores
 		oreRubyOre = new RubyOre(Material.rock).setBlockName("RubyOre");
 		oreSapphireOre = new SapphireOre(Material.rock).setBlockName("SapphireOre");
@@ -247,6 +256,9 @@ public class MoreOresModCore {
 		GameRegistry.registerBlock(blockAppleBlock, "AppleBlock");
 		GameRegistry.registerBlock(blockBrownieBlock, "BrownieBlock");
 		
+		//Register Furnture
+		GameRegistry.registerBlock(blockOakTable, "OakTable");
+		
 		//Register Ore
 		GameRegistry.registerBlock(oreRubyOre, "RubyOre");
 		GameRegistry.registerBlock(oreSapphireOre,  "SapphireOre");
@@ -297,8 +309,9 @@ public class MoreOresModCore {
 		//Register Entities
 		EntityHandler.registerAnimals(EntityCakeCow.class, "CakeCow");
 		EntityRegistry.registerGlobalEntityID(EntityCakeCow.class, "CakeCow", 500);
-		EntityRegistry.registerModEntity(EntityCakeCow.class, "CakeCow", 500, MoreOresModCore.modid, 64, 1, true);	
-		}
+		EntityRegistry.registerModEntity(EntityCakeCow.class, "CakeCow", 500, MoreOresModCore.modid, 64, 1, true);			
+	
+	}
 	
 	@EventHandler
 	public static void Init(FMLInitializationEvent event) {
@@ -344,6 +357,8 @@ public class MoreOresModCore {
 		ItemStack AppleBlockStack = new ItemStack(MoreOresModCore.blockAppleBlock);
 		ItemStack MultiAppleStack = new ItemStack(Items.apple, 9);
 		ItemStack ChocolateStack = new ItemStack(MoreOresModCore.foodChocolate);
+		ItemStack ChocolateMilkStack = new ItemStack(MoreOresModCore.foodChocolateMilk);
+		ItemStack MilkStack = new ItemStack(Items.milk_bucket);
 
 		//Crafting Recipes
 		
@@ -487,6 +502,13 @@ public class MoreOresModCore {
 				"aaa",
 				"aaa",
 				'a', AppleStack);
+		
+		//Chocolate Milk
+		GameRegistry.addRecipe(ChocolateMilkStack, 
+				"cm",
+				
+				'c', ChocolateStack,
+				'm', MilkStack);
 		
 		//Shapeless Crafting Recipies
 		
