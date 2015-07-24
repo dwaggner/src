@@ -52,6 +52,7 @@ import mod.moreoresmod.mod.entity.EntityCakeCow;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -359,6 +360,8 @@ public class MoreOresModCore {
 		ItemStack ChocolateStack = new ItemStack(MoreOresModCore.foodChocolate);
 		ItemStack ChocolateMilkStack = new ItemStack(MoreOresModCore.foodChocolateMilk);
 		ItemStack MilkStack = new ItemStack(Items.milk_bucket);
+		ItemStack OakTableStack = new ItemStack(MoreOresModCore.blockOakTable);
+		ItemStack OakPlankStack = new ItemStack(Blocks.planks);
 
 		//Crafting Recipes
 		
@@ -510,6 +513,12 @@ public class MoreOresModCore {
 				'c', ChocolateStack,
 				'm', MilkStack);
 		
+		//Oak Table
+		GameRegistry.addRecipe(OakTableStack,
+				"www",
+				" w ",
+				"www",
+				'w', OakPlankStack);
 		//Shapeless Crafting Recipies
 		
 		//GreenMint Candy
